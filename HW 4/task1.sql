@@ -1,0 +1,24 @@
+DROP DATABASE IF EXISTS pet_database;
+CREATE DATABASE pet_database;
+USE pet_database;
+
+DROP TABLE IF EXISTS petPet, petEvent;
+
+CREATE TABLE petPet (
+Petname VARCHAR(20) NOT NULL PRIMARY KEY,
+Owner VARCHAR(45) NOT NULL,
+Species VARCHAR(20) NOT NULL,
+Gender ENUM('M','F'),
+Birth DATE NOT NULL,
+Death DEFAULT 'ALIVE'
+);
+
+
+CREATE TABLE petEvent (
+Petname VARCHAR(20) NOT NULL PRIMARY KEY,
+Eventdate DATE NOT NULL,
+Eventtype VARCHAR(20) NOT NULL,
+Remark VARCHAR(255),
+FOREIGN KEY(Petname) REFERENCES petPet(Petname)
+);
+
